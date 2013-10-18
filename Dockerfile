@@ -28,6 +28,9 @@ RUN apt-get install -y python-software-properties && \
 #Jenkins
 RUN wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 
+#Subversion
+RUN apt-get install -y subversion
+
 #Config
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
