@@ -25,7 +25,7 @@ RUN add-apt-repository ppa:webupd8team/java -y && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/1.586/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/1.593/jenkins.war
 
 #Subversion
 RUN apt-get install -y subversion
