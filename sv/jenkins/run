@@ -3,4 +3,4 @@
 #sv start socklog-unix || exit 1
 
 exec 2>&1
-exec java -jar /jenkins.war
+exec java -jar /jenkins.war --prefix=/jenkins
