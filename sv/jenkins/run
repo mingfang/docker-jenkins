@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 #sv start socklog-unix || exit 1
+
+source /etc/envvars
+env
 
 exec 2>&1
 exec java -jar /jenkins.war --prefix=/jenkins
