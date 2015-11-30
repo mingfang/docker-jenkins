@@ -1,2 +1,6 @@
 .git
-jenkins
+jenkins/*.log
+jenkins/logs
+jenkins/workspace
+jenkins/war
+jenkins/jobs/*/builds

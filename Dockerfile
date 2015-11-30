@@ -31,5 +31,8 @@ RUN apt-get install -y subversion
 RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
     chmod +x /usr/local/bin/docker
 
+#Copy Jobs
+COPY jenkins/jobs /root/.jenkins/jobs
+
 #Add runit services
 ADD sv /etc/service 
