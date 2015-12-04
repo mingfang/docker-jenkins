@@ -31,6 +31,11 @@ RUN apt-get install -y subversion
 RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/docker-latest && \
     chmod +x /usr/local/bin/docker
 
+#Kubectl
+RUN cd /usr/bin && \
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.1.2/bin/linux/amd64/kubectl && \
+    chmod +x kubectl
+
 #Copy Jobs
 COPY jenkins/jobs /root/.jenkins/jobs
 
