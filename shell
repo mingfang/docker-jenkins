@@ -1,1 +1,4 @@
-docker run -v `pwd`/jenkins:/root/.jenkins -v /var/run/docker.sock:/run/docker.sock -p 8080:8080 -i -t jenkins /bin/bash
+#!/bin/bash
+[[ "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" =~  .*docker-(.*) ]]
+
+docker run -v `pwd`/jenkins:/root/.jenkins -v /var/run/docker.sock:/run/docker.sock -p 8080:8080 -v `pwd`:/docker -w /docker --rm -it ${BASH_REMATCH[1]} /bin/bash
