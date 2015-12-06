@@ -1,4 +1,4 @@
 #!/bin/bash
-[[ "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" =~  .*docker-(.*) ]]
+[[ "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" =~  .*docker-([a-zA-Z0-9]*) ]]
 
 docker run -v `pwd`/jenkins:/root/.jenkins -v /var/run/docker.sock:/run/docker.sock -p 8080:8080 -v `pwd`:/docker -w /docker --rm -it ${BASH_REMATCH[1]} /bin/bash
