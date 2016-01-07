@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1.11">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>3</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </org.jenkinsci.plugins.workflow.job.properties.BuildDiscarderProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@1.11">
+    <script>def scaleUp(){
+    echo &quot;Scaling Up&quot;
+    node(&apos;master&apos;){
+        echo &quot;in master&quot;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client -o json | jq \&apos;.spec.replicas+1\&apos;|xargs -I \&apos;{}\&apos; kubectl --server=http://$KMASTER:8080 scale rc jenkins-swarm-client --replicas=\&apos;{}\&apos;&apos;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client&apos;
+    }
+}
+
+def scaleDown(){
+    echo &quot;Scaling Down&quot;
+    node(&apos;master&apos;){
+        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client -o json | jq \&apos;.spec.replicas-1\&apos;|xargs -I \&apos;{}\&apos; kubectl --server=http://$KMASTER:8080 scale rc jenkins-swarm-client --replicas=\&apos;{}\&apos;&apos;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client&apos;
+    }
+}
+
+def MAX_NODES = 10
+def MIN_NODES = 1
+def totalIdle = 0
+def totalBusy = 0
+for (node in Jenkins.instance.nodes) {
+    def countIdle = node.toComputer().countIdle()
+    def countBusy = node.toComputer().countBusy()
+    echo &quot;Node: $node.name, Busy: $countBusy, Idle: $countIdle&quot;
+    totalIdle += countIdle
+    totalBusy += countBusy
+}
+//if there&apos;s no idle executors then scale up
+if(totalIdle == 0 &amp;&amp; Jenkins.instance.nodes.size() &lt; MAX_NODES){
+    scaleUp()
+}
+//if there&apos;s no busy executors then scale down
+else if(totalBusy == 0 &amp;&amp; Jenkins.instance.nodes.size() &gt; MIN_NODES){
+    scaleDown()
+}</script>
+    <sandbox>false</sandbox>
+  </definition>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>* * * * *
+</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+</flow-definition>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1.11">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@1.11">
+    <script>@NonCPS
+def script(){
+Jenkins.instance.items.collect{
+    item-&gt;item.getAllJobs().findAll{
+        job-&gt;!(job.name ==~ /SYSTEM_DeleteAllBuilds/)
+    }
+}.flatten().each{job-&gt;
+  	println job.getBuilds().each{build-&gt;build.delete()}
+}    
+}
+
+script()</script>
+    <sandbox>false</sandbox>
+  </definition>
+  <triggers/>
+</flow-definition>

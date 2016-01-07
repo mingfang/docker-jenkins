@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1.11">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@1.11">
+    <script>@NonCPS
+def script(){
+Jenkins.instance.items.collect{
+    item-&gt;item.getAllJobs().findAll{
+        job-&gt;!(job.name ==~ /SYSTEM_.*/) &amp;&amp; !job.isInQueue() &amp;&amp; !job.isBuilding()
+    }
+}.flatten().each{job-&gt;
+    def parent = job.getParent().name
+    println &quot;Scheduling $parent/$job.name&quot;
+    job.scheduleBuild()
+}
+}
+
+script()
+</script>
+    <sandbox>false</sandbox>
+  </definition>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>@midnight</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+</flow-definition>
