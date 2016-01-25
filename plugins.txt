@@ -1,0 +1,5 @@
+workflow-multibranch
+workflow-aggregator
+chucknorris
+sonar
+swarm
