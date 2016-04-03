@@ -22,7 +22,7 @@ RUN add-apt-repository ppa:webupd8team/java -y && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/1.645/jenkins.war
+RUN wget http://mirrors.jenkins-ci.org/war-rc/2.0/jenkins.war
 
 #Subversion
 RUN apt-get install -y subversion
@@ -33,7 +33,7 @@ RUN wget -O /usr/local/bin/docker https://get.docker.io/builds/Linux/x86_64/dock
 
 #Kubectl
 RUN cd /usr/bin && \
-    wget https://storage.googleapis.com/kubernetes-release/release/v1.1.4/bin/linux/amd64/kubectl && \
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.2.1/bin/linux/amd64/kubectl && \
     chmod +x kubectl
 
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
