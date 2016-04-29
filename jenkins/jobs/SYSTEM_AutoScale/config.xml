@@ -18,16 +18,16 @@
     echo &quot;Scaling Up&quot;
     node(&apos;master&apos;){
         echo &quot;in master&quot;
-        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client -o json | jq \&apos;.spec.replicas+1\&apos;|xargs -I \&apos;{}\&apos; kubectl --server=http://$KMASTER:8080 scale rc jenkins-swarm-client --replicas=\&apos;{}\&apos;&apos;
-        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client&apos;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get deployment jenkins-swarm-client -o json | jq \&apos;.spec.replicas+1\&apos;|xargs -I \&apos;{}\&apos; kubectl --server=http://$KMASTER:8080 scale deployment jenkins-swarm-client --replicas=\&apos;{}\&apos;&apos;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get deployment jenkins-swarm-client&apos;
     }
 }
 
 def scaleDown(){
     echo &quot;Scaling Down&quot;
     node(&apos;master&apos;){
-        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client -o json | jq \&apos;.spec.replicas-1\&apos;|xargs -I \&apos;{}\&apos; kubectl --server=http://$KMASTER:8080 scale rc jenkins-swarm-client --replicas=\&apos;{}\&apos;&apos;
-        sh &apos;kubectl --server=http://$KMASTER:8080 get rc jenkins-swarm-client&apos;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get deployment jenkins-swarm-client -o json | jq \&apos;.spec.replicas-1\&apos;|xargs -I \&apos;{}\&apos; kubectl --server=http://$KMASTER:8080 scale deployment jenkins-swarm-client --replicas=\&apos;{}\&apos;&apos;
+        sh &apos;kubectl --server=http://$KMASTER:8080 get deployment jenkins-swarm-client&apos;
     }
 }
 
