@@ -3,3 +3,4 @@ workflow-aggregator
 chucknorris
 sonar
 swarm
+scm-sync-configuration
