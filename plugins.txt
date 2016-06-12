@@ -1,6 +1,9 @@
-workflow-multibranch
 workflow-aggregator
+workflow-cps-global-lib
+workflow-multibranch
 chucknorris
 sonar
 swarm
 scm-sync-configuration
+github-oauth
+github-organization-folder
