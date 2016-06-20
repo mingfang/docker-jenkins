@@ -1,3 +1,4 @@
+jenkins/**/*
 jenkins/jobs/**/builds
 jenkins/jobs/**/lastStable
 jenkins/jobs/**/lastSuccessful
