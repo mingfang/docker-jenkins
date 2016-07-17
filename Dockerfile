@@ -30,11 +30,11 @@ RUN wget -O - https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz | tar
 
 #Kubectl
 RUN cd /usr/bin && \
-    wget https://storage.googleapis.com/kubernetes-release/release/v1.2.5/bin/linux/amd64/kubectl && \
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.3.0/bin/linux/amd64/kubectl && \
     chmod +x kubectl
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.12/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.13/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
