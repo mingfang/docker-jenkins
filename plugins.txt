@@ -10,3 +10,4 @@ envinject
 postbuild-task
 extra-columns
 build-name-setter
+ansible

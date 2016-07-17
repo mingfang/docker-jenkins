@@ -33,6 +33,12 @@ RUN cd /usr/bin && \
     wget https://storage.googleapis.com/kubernetes-release/release/v1.3.0/bin/linux/amd64/kubectl && \
     chmod +x kubectl
 
+#Ansible
+RUN apt-get install -y libssl-dev libffi-dev python-dev python-pip
+RUN pip install --upgrade setuptools
+RUN pip install httplib2
+RUN pip install ansible
+
 #Jenkins
 RUN wget http://updates.jenkins-ci.org/download/war/2.13/jenkins.war
 
