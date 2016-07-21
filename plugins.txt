@@ -11,3 +11,5 @@ postbuild-task
 extra-columns
 build-name-setter
 ansible
+slack
+parameterized-trigger
