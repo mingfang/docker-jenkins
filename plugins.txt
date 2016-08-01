@@ -13,3 +13,4 @@ build-name-setter
 ansible
 slack
 parameterized-trigger
+build-monitor-plugin
