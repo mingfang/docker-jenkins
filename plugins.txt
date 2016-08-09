@@ -1,7 +1,6 @@
 chucknorris
 sonar
 swarm
-scm-sync-configuration
 github-oauth
 github-organization-folder
 job-dsl
