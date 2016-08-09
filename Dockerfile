@@ -39,6 +39,12 @@ RUN pip install --upgrade setuptools
 RUN pip install httplib2
 RUN pip install ansible
 
+#Sonar Runner
+RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.6.1.zip && \
+    unzip sonar*zip && \
+    ln -s /sonar-scanner-*/bin/sonar-scanner /usr/local/bin && \
+    rm sonar*zip
+
 #Jenkins
 RUN wget http://updates.jenkins-ci.org/download/war/2.17/jenkins.war
 
