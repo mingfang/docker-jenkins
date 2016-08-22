@@ -14,3 +14,4 @@ slack
 parameterized-trigger
 build-monitor-plugin
 mask-passwords
+multiple-scms
