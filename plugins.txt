@@ -15,3 +15,4 @@ parameterized-trigger
 build-monitor-plugin
 mask-passwords
 multiple-scms
+reverse-proxy-auth-plugin
