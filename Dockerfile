@@ -33,7 +33,7 @@ RUN wget -O - https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz | tar
 
 #Kubectl
 RUN cd /usr/bin && \
-    wget https://storage.googleapis.com/kubernetes-release/release/v1.3.5/bin/linux/amd64/kubectl && \
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.4.6/bin/linux/amd64/kubectl && \
     chmod +x kubectl
 
 #Ansible
@@ -49,7 +49,7 @@ RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-sc
     rm sonar*zip
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.28/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.34/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
