@@ -16,3 +16,6 @@ build-monitor-plugin
 mask-passwords
 multiple-scms
 reverse-proxy-auth-plugin
+htmlpublisher
+sidebar-link
+naginator
