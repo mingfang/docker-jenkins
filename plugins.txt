@@ -1,9 +1,9 @@
+job-dsl
 chucknorris
 sonar
 swarm
 github-oauth
 github-organization-folder
-job-dsl
 promoted-builds
 envinject
 postbuild-task
