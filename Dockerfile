@@ -50,7 +50,7 @@ RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-sc
     rm sonar*zip
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.62/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.67/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
