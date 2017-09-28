@@ -5,6 +5,10 @@
 source /etc/envvars
 env
 
+mkdir -p /root/.jenkins
+rm -r /root/.jenkins/plugins
+ln -s /jenkins/plugins /root/.jenkins
+
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
