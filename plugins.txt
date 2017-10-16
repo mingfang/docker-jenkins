@@ -19,3 +19,4 @@ reverse-proxy-auth-plugin
 htmlpublisher
 sidebar-link
 naginator
+workflow-aggregator
