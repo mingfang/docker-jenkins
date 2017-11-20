@@ -20,3 +20,4 @@ htmlpublisher
 sidebar-link
 naginator
 workflow-aggregator
+credentials-binding
