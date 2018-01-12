@@ -3,7 +3,6 @@
 #sv start socklog-unix || exit 1
 
 source /etc/envvars
-env
 
 mkdir -p /root/.jenkins
 rm -r /root/.jenkins/plugins
@@ -13,4 +12,4 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
 exec 2>&1
-exec java -Djenkins.install.runSetupWizard=false -jar /jenkins.war --prefix=/jenkins
+exec java -Dhudson.model.DirectoryBrowserSupport.CSP= -Djenkins.install.runSetupWizard=false -jar /jenkins.war --prefix=/jenkins
