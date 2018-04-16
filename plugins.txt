@@ -21,3 +21,5 @@ sidebar-link
 naginator
 workflow-aggregator
 credentials-binding
+description-setter
+environment-script
