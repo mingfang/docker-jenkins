@@ -44,7 +44,7 @@ RUN pip install ansible
 RUN pip install yamlreader
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.117/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.118/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
@@ -57,8 +57,6 @@ RUN mkdir -p /jenkins/plugins && \
 #Trust Github, this is needed for SCM Configuration Plugin
 RUN mkdir -p /root/.ssh && \
     ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-COPY config/ /root/.jenkins/
 
 # Add runit services
 COPY sv /etc/service 
