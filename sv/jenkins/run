@@ -11,4 +11,4 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
 exec 2>&1
-exec java -Dhudson.model.DirectoryBrowserSupport.CSP= -Djenkins.install.runSetupWizard=false $ARGS -jar /jenkins.war ${PREFIX:"--prefix=$PREFIX"}
+exec java -Dhudson.model.DirectoryBrowserSupport.CSP= -Djenkins.install.runSetupWizard=false $ARGS -jar /jenkins.war ${CONTEXT:+"--prefix=$CONTEXT"}
