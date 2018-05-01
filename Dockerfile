@@ -44,7 +44,7 @@ RUN pip install ansible
 RUN pip install yamlreader
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.118/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.119/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
