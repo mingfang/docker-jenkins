@@ -33,18 +33,11 @@ RUN wget -O - https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz | tar
 
 #Kubectl
 RUN cd /usr/bin && \
-    wget https://storage.googleapis.com/kubernetes-release/release/v1.10.1/bin/linux/amd64/kubectl && \
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.11.1/bin/linux/amd64/kubectl && \
     chmod +x kubectl
 
-#Ansible
-RUN apt-get install -y libssl-dev libffi-dev python-dev python-pip
-RUN pip install --upgrade setuptools
-RUN pip install httplib2
-RUN pip install ansible
-RUN pip install yamlreader
-
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.127/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.138/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
