@@ -37,7 +37,7 @@ RUN cd /usr/bin && \
     chmod +x kubectl
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.138/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.147/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
