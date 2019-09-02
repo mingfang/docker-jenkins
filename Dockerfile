@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 as base
+FROM ubuntu:18.04 as base
 
 ENV DEBIAN_FRONTEND=noninteractive TERM=xterm
 RUN echo "export > /etc/envvars" >> /root/.bashrc && \
@@ -11,19 +11,13 @@ ENV LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
 # Runit
 RUN apt-get install -y --no-install-recommends runit
-CMD bash -c 'export > /etc/envvars && /usr/sbin/runsvdir-start'
+CMD bash -c 'export > /etc/envvars && /usr/bin/runsvdir /etc/service'
 
 # Utilities
-RUN apt-get install -y --no-install-recommends vim less net-tools inetutils-ping wget curl git telnet nmap socat dnsutils netcat tree htop unzip sudo software-properties-common jq psmisc iproute python ssh rsync gettext-base
+RUN apt-get install -y --no-install-recommends vim less net-tools inetutils-ping wget curl git telnet nmap socat dnsutils netcat tree htop unzip sudo software-properties-common jq psmisc iproute2 python ssh rsync gettext-base
 
-#Install Oracle Java 8
-RUN add-apt-repository ppa:webupd8team/java -y && \
-    apt-get update && \
-    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get install -y oracle-java8-installer && \
-    apt install oracle-java8-unlimited-jce-policy && \
-    rm -r /var/cache/oracle-jdk8-installer
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+# Java
+RUN apt-get -y install openjdk-8-jdk
 
 #Subversion
 RUN apt-get install -y subversion
@@ -37,7 +31,7 @@ RUN cd /usr/bin && \
     chmod +x kubectl
 
 #Jenkins
-RUN wget http://updates.jenkins-ci.org/download/war/2.157/jenkins.war
+RUN wget http://updates.jenkins-ci.org/download/war/2.193/jenkins.war
 
 #Install plugins
 RUN curl -L https://raw.githubusercontent.com/hgomez/devops-incubator/master/forge-tricks/batch-install-jenkins-plugins.sh -o batch-install-jenkins-plugins.sh && \
